@@ -5,5 +5,5 @@ View the [PDF](https://github.com/Danc2050/resume/blob/master/resume.pdf).
 
 
 <div align="center">
-  <img alt="Résumé" src="https://raw.githubusercontent.com/danc2050/resume/master/resume.png" width="70%" />
+  <img alt="Résumé" src="https://raw.githubusercontent.com/Danc2050/resume/5a3b742a523a1045718c0a3ff663652094b079dc/resume.pdf" width="70%" />
 </div>
