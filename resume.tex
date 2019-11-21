@@ -16,12 +16,12 @@
 % CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 %
 
-
+\setlength\parindent{0pt}
 %-------------------------------------------------------------------------------
 % CONFIGURATIONS
 %-------------------------------------------------------------------------------
 % A4 paper size by default, use 'letterpaper' for US letter
-\documentclass[11pt, a4paper]{awesome-cv}
+\documentclass[100pt, a4paper]{awesome-cv}
 
 % Configure page margins with geometry
 \geometry{left=1.4cm, top=.8cm, right=1.4cm, bottom=1.8cm, footskip=.5cm}
@@ -35,67 +35,68 @@
 \colorlet{awesome}{awesome-skyblue}
 % Uncomment if you would like to specify your own color
 % \definecolor{awesome}{HTML}{CA63A8}
-
 % Colors for text
 % Uncomment if you would like to specify your own color
 % \definecolor{darktext}{HTML}{414141}
 % \definecolor{text}{HTML}{333333}
 % \definecolor{graytext}{HTML}{5D5D5D}
 % \definecolor{lighttext}{HTML}{999999}
-
 % Set false if you don't want to highlight section with awesome color
 \setbool{acvSectionColorHighlight}{true}
-
 % If you would like to change the social information separator from a pipe (|) to something else
 \renewcommand{\acvHeaderSocialSep}{\quad\textbar\quad}
-
 \makeatletter
 \patchcmd{\@sectioncolor}{\color}{\mdseries\color}{}{}
 \makeatother
-
 %-------------------------------------------------------------------------------
 %	PERSONAL INFORMATION
 %	Comment any of the lines below if they are not required
 %-------------------------------------------------------------------------------
 % Available options: circle|rectangle,edge/noedge,left/right
 % \photo[rectangle,edge,right]{profile}
-\name{Son}{Vu}
-%\position{Software Engineer}
-\address{Hillsboro, OR}
-
-\mobile{(971) 227-4756}
-\email{svuhoang@gmail.com}
+\huge \textbf{Daniel Connelly}\\
+\large \textbf{Address: }Portland\\
+\large \textbf{Mobile: }(503) 504-4930\\
+\large \textbf{Email: }\href{mailto:connellyd2050@gmail.com}{connellyd2050@gmail.com}\\
+\large \textbf{GitHub: }\href{https://github.com/Danc2050}{https://github.com/Danc2050}\\
+\large \textbf{LinkedIn: }\href{https://www.linkedin.com/in/dconnelly2/}{https://www.linkedin.com/in/dconnelly2/}
+\noindent
+\iffalse
+%This is the code that came with this template (mostly)
+\name{Daniel}{Connelly}
+%\position{}
+\address{\large Portland, OR}
+\mobile{\normalsize (503) 504-4930}
+\email{ connellyd2050@gmail.com}
 % \homepage{homepage}
-\github{Zeiloz}
-\linkedin{svuhoang}
+\github{Danc2050}
+\linkedin{dconnelly2}
 % \gitlab{gitlab-id}
 % \stackoverflow{SO-id}{SO-name}
 % \twitter{@twit}
 % \skype{skype-id}
 % \reddit{reddit-id}
 % \extrainfo{extra informations}
-
 %-------------------------------------------------------------------------------
+\fi
 \begin{document}
-
 % Print the header with above personal informations
 % Give optional argument to change alignment(C: center, L: left, R: right)
 \makecvheader[C]
-
 % Print the footer with 3 arguments(<left>, <center>, <right>)
 % Leave any of these blank if they are not needed
 % \makecvfooter
 %   {\today}
 %   {Junhao Dong~~~·~~~Résumé}
 %   {\thepage}
-
 %-------------------------------------------------------------------------------
 %	CV/RESUME CONTENT
 %	Each section is imported separately, open each file in turn to modify content
 %-------------------------------------------------------------------------------
-\input{resume/education.tex}
+%\input{resume/contact.tex}\\
+\noindent \input{resume/education.tex}
 \input{resume/skills.tex}
-\input{resume/projects.tex}
 \input{resume/experience.tex}
+\input{resume/projects.tex}
 %-------------------------------------------------------------------------------
 \end{document}

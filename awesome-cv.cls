@@ -200,7 +200,7 @@
 
 % For elements of entry
 \newcommand*{\entrytitlestyle}[1]{{\fontsize{10pt}{1em}\bodyfont\bfseries\color{darktext} #1}}
-\newcommand*{\entrypositionstyle}[1]{{\fontsize{9pt}{1em}\bodyfont\scshape\color{graytext} #1}}
+\newcommand*{\entrypositionstyle}[1]{{\fontsize{8pt}{1em}\bodyfont\scshape\color{graytext} #1}}
 \newcommand*{\entrydatestyle}[1]{{\fontsize{8pt}{1em}\bodyfontlight\slshape\color{graytext} #1}}
 \newcommand*{\entrylocationstyle}[1]{{\fontsize{9pt}{1em}\bodyfontlight\slshape\color{awesome} #1}}
 \newcommand*{\descriptionstyle}[1]{{\fontsize{9pt}{1em}\bodyfontlight\upshape\color{text} #1}}
@@ -384,25 +384,30 @@
     \ifthenelse{\equal{\@photoalign}{left}}{\raggedright\drawphoto}{}
   \end{minipage}
   \begin{minipage}[c]{\headertextwidth}
-    \ifthenelse{\equal{#1}{L}}{\raggedright}{\ifthenelse{\equal{#1}{R}}{\raggedleft}{\centering}}
+    \ifthenelse{\equal{#1}{L}}{\raggedright}{\ifthenelse{\equal{#1}{R}}{\raggedleft}}
     \headerfirstnamestyle{\@firstname}\headerlastnamestyle{{}\acvHeaderNameDelim\@lastname}%
     \\[\acvHeaderAfterNameSkip]%
     \ifthenelse{\isundefined{\@position}}{}{\headerpositionstyle{\@position\\[\acvHeaderAfterPositionSkip]}}%
-    \ifthenelse{\isundefined{\@address}}{}{\headeraddressstyle{\@address\\[\acvHeaderAfterAddressSkip]}}%
+    \ifthenelse{\isundefined{\@address}}{}{\headersocialstyle{
+    \newbool{isstart}%
+      \setbool{isstart}{true}%
+    \normalsize \textbf{Address}: \@address\\[\acvHeaderAfterAddressSkip]}}%
     \headersocialstyle{%
       \newbool{isstart}%
       \setbool{isstart}{true}%
       \ifthenelse{\isundefined{\@mobile}}%
         {}%
         {%
-          \faPhone\acvHeaderIconSep\@mobile%
+          \textbf{\normalsize Mobile: }\@mobile%
           \setbool{isstart}{false}%
         }%
       \ifthenelse{\isundefined{\@email}}%
         {}%
         {%
-          \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
-          \href{mailto:\@email}{\faEnvelopeO\acvHeaderIconSep\@email}%
+          %
+          \\
+          \textbf{Email:}\@email%
+          \setbool{isstart}{true}%
         }%
       \ifthenelse{\isundefined{\@homepage}}%
         {}%
@@ -413,8 +418,10 @@
       \ifthenelse{\isundefined{\@github}}%
         {}%
         {%
-          \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
-          \href{https://github.com/\@github}{\faGithub\acvHeaderIconSep\@github}%
+          %
+          \\
+          \href{https://github.com/\@github}{\textbf{GitHub: }https://github.com/\@github}%
+           \setbool{isstart}{true}%
         }%
       \ifthenelse{\isundefined{\@gitlab}}%
         {}%
@@ -431,8 +438,9 @@
       \ifthenelse{\isundefined{\@linkedin}}%
         {}%
         {%
-          \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
-          \href{https://www.linkedin.com/in/\@linkedin}{\faLinkedin\acvHeaderIconSep\@linkedin}%
+          %
+          \\
+          \href{https://linkedin.com/\@linkedin}{\textbf{Linkedin: }https://www.linkedin.com/in/\@linkedin}%
         }%
       \ifthenelse{\isundefined{\@twitter}}%
         {}%
@@ -470,10 +478,9 @@
       {\headerquotestyle{\@quote\\}\vspace{\acvHeaderAfterQuoteSkip}}%
   \end{minipage}%
   \begin{minipage}[c]{\headerphotowidth}%
-    \ifthenelse{\equal{\@photoalign}{right}}{\raggedleft\drawphoto}{}
+    \ifthenelse{\equal{\@photoalign}{right}}{\raggedleft\drawphoto}{\centeri}
   \end{minipage}
 }
-
 % Define a footer for CV
 % Usage: \makecvfooter{<left>}{<center>}{<right>}
 \newcommand*{\makecvfooter}[3]{%
@@ -509,6 +516,18 @@
 }{%
   \par
   \vspace{2mm}
+}
+
+% Define environment for projects
+% Usage: \cvproject{<title>}{<date>}{<description>}
+\newcommand*{\cvproject}[3]{
+  \vspace{-2.0mm}
+  \setlength\tabcolsep{0pt}
+  \setlength{\extrarowheight}{0pt}
+  \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{12.5cm} R{4.5cm}}
+      \entrytitlestyle{#1} & \entrydatestyle{#2} \\
+    \multicolumn{2}{L{17cm}}{\descriptionstyle{#3}} \\
+  \end{tabular*}
 }
 
 % Define an environment for cventry
@@ -577,19 +596,6 @@
 \newcommand*{\cvhonor}[4]{%
   \honordatestyle{#4} & \honorpositionstyle{#1}, \honortitlestyle{#2} & \honorlocationstyle{#3} \\
 }
-
-% Define environt for projects
-% Usage: \cvproject{<title>}{<date>}{<description>}
-\newcommand*{\cvproject}[3]{
-  \vspace{-2.0mm}
-  \setlength\tabcolsep{0pt}
-  \setlength{\extrarowheight}{0pt}
-  \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{12.5cm} R{4.5cm}}
-      \entrytitlestyle{#1} & \entrydatestyle{#2} \\
-    \multicolumn{2}{L{17cm}}{\descriptionstyle{#3}} \\
-  \end{tabular*}
-}
-
 
 % Define an environment for cvskill
 \newenvironment{cvskills}{%

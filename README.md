@@ -1,5 +1,5 @@
 # resume
-My resume was created by adjusting a modified version of [Awesome CV](https://github.com/junhaodong/resume).
+My resume was created by adjusting a modified version of [Awesome CV](https://github.com/junhaodong/resume) Thanks to Son for putting me onto this.
 
 View the [PDF](https://raw.githubusercontent.com/Zeiloz/resume/master/resume.pdf).
 
